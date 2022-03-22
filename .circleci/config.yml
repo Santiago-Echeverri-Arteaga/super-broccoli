@@ -12,16 +12,28 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Crear Entorno Virtual
+          name: Create Virtual Environment
           command: |
             virtualenv -p python3.7 env
             echo "source ./env/Scripts/activate" >> $BASH_ENV
       - run:
-          name: Instalar Dependencias
+          name: Installing Dependencies
           command: pip install -r requirements.txt
       - run:
-          name: Realizar Test
+          name: Testing
           command: pytest
+      - run:
+          name: Create Zip File archive of dependencies
+          command: |
+            cd env/Lib/site-packages
+            zip -r9 ../../../function.zip .
+      - run:
+          name: Add app to Zip File
+          command: zip -g  ./function.zip app
+      - persist_to_workspace:
+          root: .
+          paths:
+            - function.zip
 
 workflows:
   build-test-and-deploy:
