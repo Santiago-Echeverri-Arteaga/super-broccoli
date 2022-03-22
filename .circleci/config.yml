@@ -27,4 +27,4 @@ workflows:
         filters:
           branches:
             only:
-              
+              -deployment
