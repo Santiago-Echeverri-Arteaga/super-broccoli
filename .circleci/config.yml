@@ -10,21 +10,21 @@ jobs:
       name: python/default
       tag: '3.7'
     steps:
-      -checkout
-      -run:
+      - checkout
+      - run:
         name: Crear Entorno Virtual
         command: |
           virtualenv -p python3.7 env
           echo "source ./env/Scripts/activate" >> $BASH_ENV
-      -run:
+      - run:
         name: Instalar Dependencias
         command: pip install -r requirements.txt
 
 workflows:
   build-test-and-deploy:
     jobs:
-      -build-and-test:
+      - build-and-test:
         filters:
           branches:
             only:
-              -deployment
+              - deployment
