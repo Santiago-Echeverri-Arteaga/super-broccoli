@@ -1,0 +1,30 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@1.5.0
+  aws-cli: circleci/aws-cli@1.2.1
+
+jobs:
+  build-and-test:
+    executor:
+      name: python/default
+      tag: '3.7'
+    steps:
+      -checkout
+      -run:
+        name: Crear Entorno Virtual
+        command: |
+          virtualenv -p python3.7 env
+          echo "source ./env/Scripts/activate" >> $BASH_ENV
+      -run:
+        name: Instalar Dependencias
+        command: pip install -r requirements.txt
+
+workflows:
+  build-test-and-deploy:
+    jobs:
+      -build-and-test:
+        filters:
+          branches:
+            only:
+              
