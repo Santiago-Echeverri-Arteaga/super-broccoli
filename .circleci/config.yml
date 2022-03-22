@@ -12,13 +12,13 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Crear Entorno Virtual
-        command: |
-          virtualenv -p python3.7 env
-          echo "source ./env/Scripts/activate" >> $BASH_ENV
+          name: Crear Entorno Virtual
+          command: |
+            virtualenv -p python3.7 env
+            echo "source ./env/Scripts/activate" >> $BASH_ENV
       - run:
-        name: Instalar Dependencias
-        command: pip install -r requirements.txt
+          name: Instalar Dependencias
+          command: pip install -r requirements.txt
 
 workflows:
   build-test-and-deploy:
