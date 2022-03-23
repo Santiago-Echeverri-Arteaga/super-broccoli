@@ -1,13 +1,13 @@
 from .api.api_v1.api import router as api_router
 from mangum import Mangum
 from fastapi import FastAPI
-
+from .core import config
 app = FastAPI()
 
 @app.get("/")
 async def root():
-    return {"message": "Hola Mundo de los Heroes"}
+    return {"message": f"Hola Mundo de los Heroes: {config.settings.secret_key}"}
 
 
-app.include_router(api_router, prefix="/first")
+app.include_router(api_router, prefix=config.settings.prefix)
 handler = Mangum(app)
