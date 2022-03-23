@@ -15,7 +15,7 @@ jobs:
           name: Create Virtual Environment
           command: |
             virtualenv -p python3.7 env
-            echo "source ./env/Scripts/activate" >> $BASH_ENV
+            echo "source ./env/bin/activate" >> $BASH_ENV
       - run:
           name: Installing Dependencies
           command: pip install -r requirements.txt
