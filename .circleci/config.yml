@@ -41,15 +41,15 @@ jobs:
       - attach_workspace:
           at: ./
       - aws-cli/setup:
-        aws-region: AWS_DEFAULT_REGION
-        aws-access-key-id: AWS_ACCESS_KEY_ID
-        aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          aws-region: AWS_DEFAULT_REGION
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
       - run:
-        name: Upload to S3
-        command: aws s3 cp functionGLDB.zip s3://fastapi-itnasbucket/functionGLDB.zip
+          name: Upload to S3
+          command: aws s3 cp functionGLDB.zip s3://fastapi-itnasbucket/functionGLDB.zip
       - run:
-        name: Deploy Lambda
-        command: aws lambda update-function-code --function-name G_L_DB --s3-bucket fastapi-itnasbucket --s3-key functionGLDB.zip
+          name: Deploy Lambda
+          command: aws lambda update-function-code --function-name G_L_DB --s3-bucket fastapi-itnasbucket --s3-key functionGLDB.zip
 
 workflows:
   build-test-and-deploy:
