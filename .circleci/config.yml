@@ -55,16 +55,16 @@ workflows:
   build-test-and-deploy:
     jobs:
       - build-and-test:
-        context: Heroes-Dev
-        filters:
-          branches:
-            only:
-              - deployment
+          context: Heroes-Dev
+          filters:
+            branches:
+              only:
+                - deployment
       - deploy-dev:
-        context: Heroes-Dev
-        requires:
-          - build-and-test
-        filters:
-          branches:
-            only:
-              - deployment
+          context: Heroes-Dev
+          requires:
+            - build-and-test
+          filters:
+            branches:
+              only:
+                - deployment
