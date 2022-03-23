@@ -9,5 +9,5 @@ async def root():
     return {"message": "Hola Mundo de los Heroes"}
 
 
-app.include_router(api_router, prefix="/v1")
+app.include_router(api_router, prefix="/first")
 handler = Mangum(app)
