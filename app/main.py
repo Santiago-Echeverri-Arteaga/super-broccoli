@@ -6,7 +6,7 @@ app = FastAPI()
 
 @app.get("/")
 async def root():
-    return {"message": f"Hola Mundo de los Heroes: {config.settings.secret_key}"}
+    return {"message": f"Hola Mundo de los SUPERHeroes: {config.settings.secret_key}"}
 
 
 app.include_router(api_router, prefix=config.settings.prefix)
