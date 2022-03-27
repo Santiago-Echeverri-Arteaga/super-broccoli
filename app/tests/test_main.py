@@ -14,7 +14,7 @@ def test_read_v1():
     assert response.status_code == 200
     assert response.json() == {"message": "Esta es la versión 1.0\nEstá apenas en construcción"}
 
-def test_read_heroes():
-    response = client.get("/first/heroes/")
-    assert response.status_code == 200
-    assert response.json() == {"message": "Get Heroes!"}
+#def test_read_heroes():
+#    response = client.get("/first/heroes/")
+#    assert response.status_code == 200
+#    assert response.json() == {"message": "Get Heroes!"}
