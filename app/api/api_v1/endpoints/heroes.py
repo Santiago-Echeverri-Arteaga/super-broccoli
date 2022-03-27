@@ -13,8 +13,8 @@ db_credentials_secrets_store_arn = 'arn:aws:secretsmanager:us-east-1:33669787423
 
 @router.get("/")
 async def root():
-    response = execute_statement('SELECT * FROM Heroes')
-    return {response}
+    response = execute_statement('SELECT * FROM Heroes');
+    return(response)
 
 def execute_statement(sql):
     response = rds_client.execute_statement(
@@ -23,4 +23,4 @@ def execute_statement(sql):
         resourceArn=db_cluster_arn,
         sql=sql
         )
-    return response
+    return(response)
