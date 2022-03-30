@@ -7,7 +7,7 @@ client = TestClient(app)
 def test_read_main():
     response = client.get("/")
     assert response.status_code == 200
-    assert response.json() == {"message": "Hola Mundo de los SUPERHeroes: Secret Value"}
+    assert response.json() == {"message": "Hola Mundo de los Superheroes: Secret Value"}
 
 def test_read_v1():
     response = client.get("/first/")
