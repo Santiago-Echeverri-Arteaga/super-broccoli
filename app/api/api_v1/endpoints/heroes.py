@@ -59,9 +59,9 @@ async def review_heroe(nombre: str):
         SELECT name FROM Heroes WHERE
         name = {nombre}
         """
-    response = rds_client.execute_statement(
-        secretArn= db_credentials_secrets_store_arn,
-        database=database_name,
-        resourceArn=db_cluster_arn,
-        sql = sql)
+    #response = rds_client.execute_statement(
+    #    secretArn= db_credentials_secrets_store_arn,
+    #    database=database_name,
+    #    resourceArn=db_cluster_arn,
+    #    sql = sql)
     return(sql)
