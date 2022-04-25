@@ -64,4 +64,4 @@ async def review_heroe(nombre: str):
         database=database_name,
         resourceArn=db_cluster_arn,
         sql = sql)
-    return(response["records"])
+    return(sql)
