@@ -53,8 +53,8 @@ async def create_heroe():
     return(response)
     
 
-@router.get("/heroe/{nombre}")
-async def review_heroe(name: str): 
+@router.get("/{nombre}")
+async def review_heroe(nombre: str): 
     sql = """
         SELECT name FROM Heroes WHERE
         name = {nombre}
