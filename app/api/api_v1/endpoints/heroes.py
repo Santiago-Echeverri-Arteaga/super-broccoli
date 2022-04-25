@@ -23,7 +23,7 @@ def execute_statement(sql):
         resourceArn=db_cluster_arn,
         sql=sql
         )
-    return(response)
+    return(response["records"][0][0]["stringValue"])
 
 @router.get("/crear")
 async def create_heroe(): 
@@ -47,3 +47,18 @@ async def create_heroe():
         resourceArn=db_cluster_arn,
         sql = sql,
         parameters = param_set)
+    return(response)
+    
+
+@router.get("/heroe/{nombre}")
+async def review_heroe(name: str): 
+    sql = """
+        SELECT name FROM Heroes WHERE
+        name = {nombre}
+        """
+    response = rds_client.execute_statement(
+        secretArn= db_credentials_secrets_store_arn,
+        database=database_name,
+        resourceArn=db_cluster_arn,
+        sql = sql)
+    return(response)
