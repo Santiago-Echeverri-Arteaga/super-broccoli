@@ -23,7 +23,10 @@ def execute_statement(sql):
         resourceArn=db_cluster_arn,
         sql=sql
         )
-    return(response["records"][0][0]["stringValue"])
+    names = []
+    for s in len(response["records"]):
+        names.append(s[i][0]["stringValue"])
+    return(names)
 
 @router.get("/crear")
 async def create_heroe(): 
