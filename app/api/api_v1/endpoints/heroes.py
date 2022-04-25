@@ -25,7 +25,7 @@ def execute_statement(sql):
         )
     names = []
     for i in len(response["records"]):
-        names.append(response[i][0]["stringValue"])
+        names.append(response["records"][i][0]["stringValue"])
     return(names)
 
 @router.get("/crear")
