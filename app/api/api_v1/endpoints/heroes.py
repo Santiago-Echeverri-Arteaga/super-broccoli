@@ -24,3 +24,26 @@ def execute_statement(sql):
         sql=sql
         )
     return(response)
+
+@router.get("/crear")
+async def create_heroe(): 
+    sql = """
+        INSERT INTO Heroes
+        (name, secret_name, age, team, clasificacion, casa)
+        VALUES(:nombre, :real, :edad, :equipo, :heroe_villano, :DC_Marvel)
+        """
+    param1 = {'name':'nombre', 'value':{'stringValue': 'Capitan America'}}
+    param2 = {'name':'real', 'value':{'stringValue': 'Steve Rogers'}}
+    param3 = {'name':'edad', 'value':{'longValue': 45}}
+    param4 = {'name':'equipo', 'value':{'stringValue': 'Avengers'}}
+    param5 = {'name':'heroe_villano', 'value':{'stringValue': 'Heroe'}}
+    param6 = {'name':'DC_Marvel', 'value':{'stringValue': 'Marvel'}}
+
+    param_set = [param1, param2, param3, param4, param5, param6]
+
+    response = rds_client.execute_statement(
+        secretArn= db_credentials_secrets_store_arn,
+        database=database_name,
+        resourceArn=db_cluster_arn,
+        sql = sql,
+        parameters = param_set)
