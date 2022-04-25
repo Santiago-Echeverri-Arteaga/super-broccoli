@@ -55,7 +55,7 @@ async def create_heroe():
 
 @router.get("/select/{nombre}")
 async def review_heroe(nombre: str): 
-    sql = """
+    sql = f"""
         SELECT name FROM Heroes WHERE
         name = {nombre}
         """
@@ -64,4 +64,4 @@ async def review_heroe(nombre: str):
         database=database_name,
         resourceArn=db_cluster_arn,
         sql = sql)
-    return(nombre)
+    return(response["records"])
