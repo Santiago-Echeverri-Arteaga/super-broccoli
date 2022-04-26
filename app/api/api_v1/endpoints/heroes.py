@@ -57,7 +57,7 @@ async def create_heroe():
 async def review_heroe(age: int): 
     sql = f"""
         SELECT name FROM Heroes WHERE
-        name = \'{age}\'
+        age <= \'{age}\'
         """
     response = rds_client.execute_statement(
        secretArn= db_credentials_secrets_store_arn,
