@@ -54,11 +54,11 @@ async def create_heroe():
     
 
 @router.get("/select/{age}")
-async def review_heroe(age: int): 
-    sql = f"""
+async def review_heroe(age: str): 
+    sql = str(f"""
         SELECT name FROM Heroes WHERE
-        age <= \'{age}\'
-        """
+        name <= \'{age}\'
+        """)
     response = rds_client.execute_statement(
        secretArn= db_credentials_secrets_store_arn,
        database=database_name,
