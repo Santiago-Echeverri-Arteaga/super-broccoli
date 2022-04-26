@@ -55,7 +55,7 @@ async def create_heroe():
 
 @router.get("/select/{nombre}")
 async def review_heroe(nombre: str): 
-    sql = f"""
+    sql = """
         SELECT name FROM Heroes WHERE
         name = :Name
         """
