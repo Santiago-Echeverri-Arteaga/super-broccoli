@@ -55,9 +55,9 @@ async def create_heroe():
 
 @router.get("/select/{nombre}")
 async def review_heroe(nombre: str): 
-    sql = """
+    sql = f"""
         SELECT name FROM Heroes WHERE
-        name = :Name
+        name = '{nombre}'
         """
     response = rds_client.execute_statement(
        secretArn= db_credentials_secrets_store_arn,
@@ -65,4 +65,4 @@ async def review_heroe(nombre: str):
        resourceArn=db_cluster_arn,
        sql = sql,
        parameters = {'name':'Name', 'value':'Deadpool'})
-    return(response["records"])
+    return(sql)
