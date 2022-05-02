@@ -1,11 +1,11 @@
-# super-broccoli
-## Mi primer test
-Este es mi primer acercamiento a GitHub usando la documentación propuesta
-Ejemplo de `código`
+# Lambda API using Aurora SQL databse with CircleCI integration
+## How to configure Aurora
+TODO `código`
 ```shell
 Ejemplo de
 código en consola
 ```
-
+## How to configure CI/CD
+TO DO
 ### Elaborado por: 
 Santiago Echeverri Arteaga
